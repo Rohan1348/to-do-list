@@ -1,0 +1,34 @@
+ <!-- this is an ejs(embedded java script) file  -->
+ <!-- first we must install ejs "npm install ejs" -->
+ <!-- it is a must to keep all the ejs files under the folder named "views" -->
+ <!-- ejs file follows HTML format, but has ejs variable placeholders -->
+
+
+ <!-- we can create header and footer ejs files in views folder and put it where we want it -->
+ <%- include("header") -%>
+ <!-- this way we can add header and therefore our css style(in header) will be added to this file -->
+ <!-- no css style will be there if header here is removed -->
+ <!-- similar for footer as well -->
+
+ <div class="box heading">
+   <h1> <%= kindOfDay %> </h1>
+   <!-- above format is used to render the particular part -->
+   <!-- using above format we get the kindOfDay achieved in the app.js file -->
+ </div>
+
+ <!-- each and every line of javascript used should be enclosed as the format shown below -->
+ <div class="box">
+   <% for(var i=0; i< newListItems.length; i++){ %>
+   <div class="item">
+     <input type="checkbox">
+     <p><%= newListItems[i] %></p>
+   </div>
+   <% } %>
+
+   <form class="item" action="/" method="post">
+     <input type="text" name="newItem" placeholder="New Item" autocomplete="off" required>
+     <button type="submit" name="button">+</button>
+   </form>
+ </div>
+
+ <%- include("footer") -%>
